@@ -1,7 +1,9 @@
 #include "Test.hpp"
 #include "gtest/gtest.h"
 #include "OneVariableEquation.hpp"
+// Methods
 #include "BisectionMethod.hpp"
+#include "FixedPointMethod.hpp"
 
 typedef OneVariableEquation OVE;
 typedef BisectionMethod Bisection;
