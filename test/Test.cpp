@@ -1,24 +1,26 @@
 #include "Test.hpp"
 #include "gtest/gtest.h"
-#include "OneVariableEquation.hpp"
-// Methods
+#include "OneVariableFunction.hpp"
 #include "BisectionMethod.hpp"
 #include "FixedPointMethod.hpp"
 
-typedef OneVariableEquation OVE;
-typedef BisectionMethod Bisection;
+double fn (double arg) {
+  return 61;
+}
+OneVariableFunction func(fn);
+
+int range[2] = {1, 2};
+int iterateNumber = 12;
+BisectionMethod  b1(range, iterateNumber);
 
 TEST(SquareFuncTest, PositiveNos) {
-  EXPECT_EQ (16.0, Bisection::square (4.0));
-  EXPECT_EQ (25.0, Bisection::square (5.0));
-  EXPECT_EQ (36.0, Bisection::square (6.0));
+  EXPECT_EQ (164.0, b1.findRoot ());
 }
 
 int main (int argc, char *argv[]) {
-  Bisection *bisection = new Bisection();
-
+	b1.findRoot();
+  std::cout<<func.call(4.4);
   ::testing::InitGoogleTest(&argc, argv);
-  Bisection::square(4.0);
-
+  return 0;
   return RUN_ALL_TESTS();
 }
