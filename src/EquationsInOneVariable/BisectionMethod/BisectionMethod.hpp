@@ -4,22 +4,14 @@
 class BisectionMethod
 {
   public:
-    BisectionMethod();    //Constructor prototype
+    BisectionMethod(int [2], int);    //Constructor prototype
     ~BisectionMethod();   //Destructor prototype
-    static double square (double);
+    void setRange (int [2]);
+    void setIterateNumber (int);
+    double findRoot ();
+	private:
+		int _range[2];
+		int _iterateNumber;
 };
-
-BisectionMethod::BisectionMethod() {
-  std::cout<<"BisectionMethod started\n";
-}
-
-BisectionMethod::~BisectionMethod() {
-  std::cout<<"BisectionMethod finished\n";
-}
-
-
-double BisectionMethod::square (double num) {
-  return num*num;
-}
 
 #endif /* BisectionMethod_hpp */
