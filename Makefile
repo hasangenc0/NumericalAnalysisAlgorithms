@@ -2,12 +2,12 @@
 
 CPP = g++
 CPPFLAGS = -c
-OVEPATH = src/EquationsInOneVariable/OneVariableEquation
+OVEPATH = src/EquationsInOneVariable/OneVariableFunction
 BISECTIONPATH = src/EquationsInOneVariable/BisectionMethod
 FIXEDPOINTPATH = src/EquationsInOneVariable/FixedPointMethod
 GTEST = ./lib/googletest/googletest/include
 INC = -I ${OVEPATH} -I ${BISECTIONPATH} -I ${FIXEDPOINTPATH} -I ${GTEST}
-LIB = lib/googletest/googletest/libgtest.a lib/googletest/googletest/libgtest_main.a
+LIB = $(BISECTIONPATH)/BisectionMethod.cpp ${OVEPATH}/OneVariableFunction.cpp lib/googletest/googletest/libgtest.a lib/googletest/googletest/libgtest_main.a
 OutputFileName = test.o
 InputFileName = test/Test.cpp
 
@@ -22,4 +22,4 @@ clear:
 	rm -f ./bin/$(OutputFileName)
 
 test: $(OutputFileName) runtest clear
-	
+	@#intentionally left 1 tab
