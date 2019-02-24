@@ -13,13 +13,13 @@ InputFileName = test/Test.cpp
 
 
 $(OutputFileName):
-	$(CPP) $(INC) -o ./bin/$(OutputFileName)  $(InputFileName) $(LIB)
+	 @$(CPP) $(INC) -o ./bin/$(OutputFileName)  $(InputFileName) $(LIB)
 
 runtest:
-	./bin/$(OutputFileName)
+	 @./bin/$(OutputFileName)
 
 clear:
-	rm -f ./bin/$(OutputFileName)
+	 @rm -f ./bin/$(OutputFileName)
 
 test: $(OutputFileName) runtest clear
 	@#intentionally left 1 tab
