@@ -2,12 +2,10 @@
 #include "OneVariableFunction.hpp"
 
 OneVariableFunction::OneVariableFunction(double (*fn)(double)) {
-  std::cout << "OneVariableFunction started\n";
   setFunction(fn);
 }
 
 OneVariableFunction::~OneVariableFunction() {
-  std::cout << "OneVariableFunction finished\n";
 }
 
 void OneVariableFunction::setFunction(double (*fn)(double)) {
