@@ -1,14 +1,16 @@
 #include <iostream>
+#include <cmath>
+#include "OneVariableFunction.hpp"
 #include "BisectionMethod.hpp"
 
-BisectionMethod::BisectionMethod(int range[2], int iterateNumber) {
-  std::cout<<"BisectionMethod started\n";
+BisectionMethod::BisectionMethod(int range[2], int iterateNumber, double tol,OneVariableFunction* func) {
   setRange(range);
   setIterateNumber(iterateNumber);
+	setFunction(func);
+	_TOL = tol;
 }
 
 BisectionMethod::~BisectionMethod() {
-  std::cout<<"BisectionMethod finished\n";
 }
 
 // Setters
@@ -21,18 +23,40 @@ void BisectionMethod::setIterateNumber (int iterateNumber) {
 	_iterateNumber = iterateNumber;
 }
 
+void BisectionMethod::setFunction (OneVariableFunction* func) {
+	_func = func;
+}
+
 // Main Methods
+double BisectionMethod::f (double arg) {
+	return _func->call(arg);
+}
+
 double BisectionMethod::findRoot() {
-	std::cout<<_range[0]<<" - "<<_range[1]<<std::endl; 
 	// ranges
-	int r1 = _range[0];
-	int r2 = _range[1];
+	double r1 = _range[0];
+	double r2 = _range[1];
+
+	double fr1 = _func->call(r1);
+	double fmid;
+
 	// middle point of range
-	double mid = (double)std::abs(r1 - r2)/2;
+	double mid;
 
 	for(int i = 0; i < _iterateNumber; i++) {
-		std::cout<<i<<std::endl;
-	}
+		mid = (r1 + r2)/2;
+		fmid = _func->call(mid);
+		if(fmid == 0 || fabs(r2 -r1)/2 < _TOL) {
+			return mid;
+		}
 
-	return 10;
+		if(fr1*fmid > 0) {
+			r1 = mid;
+		} else {
+			r2 = mid;
+		}
+
+	}
+	std::cout<<"Method failed after "<<_iterateNumber<<" iterations.\n";
+	return 0;
 }
