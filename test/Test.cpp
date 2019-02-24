@@ -1,26 +1,34 @@
 #include "Test.hpp"
+#include <algorithm>    // std::equal_range
 #include "gtest/gtest.h"
 #include "OneVariableFunction.hpp"
 #include "BisectionMethod.hpp"
 #include "FixedPointMethod.hpp"
+#include  <cmath>
 
+// define one variable function
 double fn (double arg) {
-  return 61;
+  return pow(arg, 3) + 4*pow(arg,2) - 10;
 }
-OneVariableFunction func(fn);
 
+// bisection metod parameters
 int range[2] = {1, 2};
-int iterateNumber = 12;
-BisectionMethod  b1(range, iterateNumber);
+int iterateNumber = 100;
+double tol = 0.0001;
 
-TEST(SquareFuncTest, PositiveNos) {
-  EXPECT_EQ (164.0, b1.findRoot ());
+OneVariableFunction func(fn);
+BisectionMethod b1(range, iterateNumber, tol,&func);
+
+// test class
+myTest::Test t;
+
+TEST(BisctionMethod, Test1) {
+  double res = fn(b1.findRoot ());
+  EXPECT_TRUE(t.isBetween(res, tol, -1*tol)) ;
 }
 
 int main (int argc, char *argv[]) {
-	b1.findRoot();
-  std::cout<<func.call(4.4);
   ::testing::InitGoogleTest(&argc, argv);
-  return 0;
+
   return RUN_ALL_TESTS();
 }
