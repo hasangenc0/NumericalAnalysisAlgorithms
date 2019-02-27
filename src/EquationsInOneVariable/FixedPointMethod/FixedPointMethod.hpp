@@ -4,22 +4,18 @@
 class FixedPointMethod
 {
   public:
-    FixedPointMethod();    //Constructor prototype
+    FixedPointMethod(int [2], int, double,OneVariableFunction*);    //Constructor prototype
     ~FixedPointMethod();   //Destructor prototype
-    static double square (double);
+    void setRange (int [2]);
+    void setIterateNumber (int);
+    void setFunction (OneVariableFunction*);
+    double f (double);
+    double findRoot ();
+	private:
+		int _range[2];
+		int _iterateNumber;
+    OneVariableFunction* _func;
+    double _TOL;
 };
 
-FixedPointMethod::FixedPointMethod() {
-  std::cout<<"FixedPointMethod started\n";
-}
-
-FixedPointMethod::~FixedPointMethod() {
-  std::cout<<"FixedPointMethod finished\n";
-}
-
-
-double FixedPointMethod::square (double num) {
-  return num*num;
-}
-
-#endif /* BisectionMethod_hpp */
+#endif /* FixedPointMethod_hpp */
