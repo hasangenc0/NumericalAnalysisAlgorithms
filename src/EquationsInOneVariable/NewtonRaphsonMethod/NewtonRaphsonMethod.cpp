@@ -39,7 +39,7 @@ double NewtonRaphsonMethod::f (double arg) {
 
 double NewtonRaphsonMethod::findRoot() {
 	// ranges
-	double p0 = fabs(_range[0] + _range[1])/2;
+	double p0 = _range[0];
 
 	double p;
 

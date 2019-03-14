@@ -12,7 +12,6 @@ LIB = ${NEWTONPATH}/NewtonRaphsonMethod.cpp $(BISECTIONPATH)/BisectionMethod.cpp
 OutputFileName = test.o
 InputFileName = test/Test.cpp
 
-
 $(OutputFileName):
 	 @$(CPP) $(INC) -o ./bin/$(OutputFileName)  $(InputFileName) $(LIB)
 
