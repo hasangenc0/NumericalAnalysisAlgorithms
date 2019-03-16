@@ -34,8 +34,8 @@ double trapez() {
   double x1 = x0 + h;
   double fx0 = function(x0);
   double fx1 = function(x1);
-  printf("%lf\n", fx1);
-  return (h/point)*(fx0 + fx1);
+  double error = pow(h, 3)/12*function( (x1-x0 )/2 );
+  return (h/point)*(fx0 + fx1) - error;
 
 }
 
@@ -48,7 +48,8 @@ double simpson() {
   double fx0 = function(x0);
   double fx1 = function(x1);
   double fx2 = function(x2);
-  return (h/point)*(fx0 + 4*fx1 + fx2);   
+  double error = pow(h, 5)/90*function( (x2-x0 )/2 );
+  return (h/point)*(fx0 + 4*fx1 + fx2) - error;   
 }
 
 double simpsonThreeEight() {
@@ -62,7 +63,8 @@ double simpsonThreeEight() {
   double fx1 = function(x1);
   double fx2 = function(x2);
   double fx3 = function(x3);
-  return (3*h/(2*point)) *(fx0 + 3*fx1 + 3*fx2 + fx3);   
+  double error = 3*pow(h, 5)/80*function( (x3-x0 )/2 );
+  return (3*h/(2*point)) *(fx0 + 3*fx1 + 3*fx2 + fx3) - error; 
 
 }
 
@@ -79,7 +81,8 @@ double boole() {
   double fx2 = function(x2);
   double fx3 = function(x3);
   double fx4 = function(x4);
-  return (2*h/(9*point)) *(fx0 + 32*fx1 + 12*fx2 + 32*fx3 + 7*fx4);   
+  double error = 8*pow(h, 7)/945*function( (x4-x0 )/2 );
+  return (2*h/(9*point)) *(fx0 + 32*fx1 + 12*fx2 + 32*fx3 + 7*fx4) - error;  
 
 
 }
