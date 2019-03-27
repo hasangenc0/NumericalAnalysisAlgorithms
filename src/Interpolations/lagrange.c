@@ -1,5 +1,5 @@
 /**
-* veri.txt
+* data.txt
 * 5
 * 1.0 0.7651977
 * 1.3 0.6200860
@@ -11,13 +11,15 @@
 #include <stdio.h>
 
 // prototypes
-int lagrange(); // reads points and 
+int lagrange(); // reads points and
 
 // file name
-char filename[8] = "veri.txt";
+char filename[8] = "data.txt";
 
 int main() {
 	lagrange();
+
+	return 0;
 }
 
 int lagrange() {
@@ -30,12 +32,12 @@ int lagrange() {
 	if( (fp = fopen(filename, "r")) == NULL ) {
 		printf("%s File not found. \n", filename);
 		return 0;
-	} 
+	}
 
 	// get point size
 	fscanf(fp, "%d", &size);
 	printf("Point Count: %d\n", size);
- 
+
 	double arr[size][size];
 
 	printf("Values:\n");

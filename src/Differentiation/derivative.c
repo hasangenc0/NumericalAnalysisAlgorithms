@@ -2,7 +2,7 @@
  * Hasan Genç
  */
 /**
- * veri.txt file format
+ * data.txt file format
  * 5
  * 1.8 10.889365
  * 1.9 12.703199
@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 // filename
-char filename[8] = "veri.txt";
+char filename[8] = "data.txt";
 
 //prototypes
 void findDerivative();
@@ -34,15 +34,15 @@ void  findDerivative() {
 	// check file exist
 	if( (fp = fopen(filename, "r")) == NULL ) {
 		printf("%s File not found. \n", filename);
-		return;;
-	} 
+		return;
+	}
 
 	// get point size
 	fscanf(fp, "%d", &size);
 	printf("Point Count: %d\n", size);
 
  	if ( size < 3) {
-		printf("Turev Alma metodunu uygulamak için en az 3 nokta verilmesi gerekir\n");
+		printf("This method needs at least 3 data points.\n");
 		return;
  	}
 
@@ -56,12 +56,12 @@ void  findDerivative() {
 
 	// close file
 	fclose(fp);
-	
+
 	// result will be save to this array
 	double results[size];
 
 	// set h value which is in the formula
-	const double h = arr[1][0] - arr[0][0]; 
+	const double h = arr[1][0] - arr[0][0];
 
 	for(int i = 0; i < size; i++) {
 
